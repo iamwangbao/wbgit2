@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+        <configuration  >
+    <!--调用database.properties文件-->
+   <properties resource="db.properties"/>
+
+
+    <!--类型别名-->
+    <typeAliases>
+        <typeAlias alias="DownInformation" type="com.down.ssm.domain.DownInformation"/>
+    </typeAliases>
+    <environments default="dvr">
+        <environment id="dvr">
+            <!--事务管理器  选择jdbc获取事务-->
+            <transactionManager type="JDBC"/>
+            <!--数据源有POOLED 和UNPOLED可选择是否使用数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://127.0.0.1:3306/down?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone =Asia/Shanghai
+"/>
+                <property name="username" value="root"/>
+                <property name="password" value="11111111"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--mappers是映射器，把mapper文件加入到配置文件中-->
+        <mapper resource="com/down/ssm/dao/DownInformationMapper.xml"/>
+    </mappers>
+</configuration>

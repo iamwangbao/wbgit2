@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Multithreaded_Download:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>Multithreaded_Download</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="Multithreaded_Download.war">
+      <element id="artifact" artifact-name="Multithreaded_Download:war exploded" />
+    </root>
+  </artifact>
+</component>

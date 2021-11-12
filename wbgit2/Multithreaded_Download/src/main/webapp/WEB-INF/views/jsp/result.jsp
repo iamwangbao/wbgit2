@@ -9,7 +9,7 @@
 <body>
 
 <h2>Download information</h2>
-   <table   >
+   <table>
     <tr>
         <td>File Name</td>
         <td>${file}</td>

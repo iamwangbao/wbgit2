@@ -3,10 +3,11 @@ package com.down.ssm.service.impl;
 import com.down.ssm.dao.DownInformationMapper;
 import com.down.ssm.domain.DownInformation;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 
-//@Repository
+@Scope("prototype")
 public class DownInformationImpl extends SqlSessionDaoSupport implements DownInformationMapper {
 
 //删除一行数据
@@ -123,5 +124,12 @@ public class DownInformationImpl extends SqlSessionDaoSupport implements DownInf
 
     }
 
+
+    //查询最后一行数据
+    @Override
+    public DownInformation selectLastOne() {
+        return this.getSqlSession().selectOne("com.down.ssm.dao"
+                + ".DownInformationMapper.selectLastOne");
+    }
 
 }

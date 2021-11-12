@@ -5,10 +5,13 @@
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
-
-
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
 
 
@@ -19,6 +22,9 @@
    <!--      <property name="message" value="Hello World!"/> -->
    </bean>
 
+
+    <!-- 引入属性文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
 
     <!-- 自动扫描(自动注入) -->
     <context:component-scan base-package="com.down.ssm.dao"/>
@@ -54,8 +60,6 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
-
-
     <!-- 注册接口类的bean，使得程序中可以用注解方式获取 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.down.ssm.dao" />
@@ -64,5 +68,22 @@
     <!-- 开启扫描 -->
     <context:component-scan base-package="com.down.ssm.service.impl" />
 
+    <bean id="druid-stat-interceptor"
+          class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+    </bean>
+
+    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+          scope="prototype">
+        <property name="patterns">
+            <list>
+                <value>com.kis.service.*</value>
+                <value>com.demo.action.*</value>
+            </list>
+        </property>
+    </bean>
+
+    <aop:config proxy-target-class="true">
+        <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut"/>
+    </aop:config>
 
 </beans>

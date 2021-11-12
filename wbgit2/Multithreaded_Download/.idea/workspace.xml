@@ -5,7 +5,7 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Multithreaded_Download" />
+      <artifact name="Multithreaded_Download:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -21,7 +21,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -40,6 +44,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
+  </component>
   <component name="ProjectId" id="20JJ61ovHXUFcmxgsaFGvwfbCsj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,9 +54,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言" value="MySQL" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="项目" />
@@ -69,11 +78,11 @@
       <recent name="D:\down\Multithreaded_Download\src\main\webapp\WEB-INF\views\jsp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\down\Multithreaded_Download\src\main\webapp" />
       <recent name="D:\down\Multithreaded_Download\src\main\webapp\WEB-INF\classes" />
       <recent name="D:\down\Multithreaded_Download\src\main\webapp\WEB-INF\log4j" />
       <recent name="D:\down\Multithreaded_Download\src\main\resources" />
       <recent name="D:\down\Multithreaded_Download\src\main\java\com\down\ssm\servlet" />
-      <recent name="D:\down\Multithreaded_Download\src\main\resources\com.down.ssm.servlet" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.down.ssm.dao" />
@@ -96,93 +105,29 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserDaoTest.updataoneTest">
-    <configuration name="UserDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Multithreaded_Download" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.down.ssm.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.down.ssm.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.down.ssm.dao.UserDaoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Tomcat 服务器.Tomcat 9.0.52">
+    <configuration name="generated-requests#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" runType="运行单个请求">
+      <method v="2" />
     </configuration>
-    <configuration name="UserDaoTest.deleteByPrimaryKeyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Multithreaded_Download" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.down.ssm.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.down.ssm.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.down.ssm.dao.UserDaoTest" />
-      <option name="METHOD_NAME" value="deleteByPrimaryKeyTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="generated-requests#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="5" runType="运行单个请求">
+      <method v="2" />
     </configuration>
-    <configuration name="UserDaoTest.insertTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Multithreaded_Download" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.down.ssm.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.down.ssm.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.down.ssm.dao.UserDaoTest" />
-      <option name="METHOD_NAME" value="insertTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="generated-requests#6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="6" runType="运行单个请求">
+      <method v="2" />
     </configuration>
-    <configuration name="UserDaoTest.selectoneTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Multithreaded_Download" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.down.ssm.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.down.ssm.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.down.ssm.dao.UserDaoTest" />
-      <option name="METHOD_NAME" value="selectoneTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="generated-requests#7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" runType="运行单个请求">
+      <method v="2" />
     </configuration>
-    <configuration name="UserDaoTest.updataoneTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Multithreaded_Download" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.down.ssm.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.down.ssm.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.down.ssm.dao.UserDaoTest" />
-      <option name="METHOD_NAME" value="updataoneTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="generated-requests#8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="8" runType="运行单个请求">
+      <method v="2" />
     </configuration>
     <configuration name="Tomcat 9.0.52" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.52" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Multithreaded_Download">
+        <artifact name="Multithreaded_Download:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/Multithreaded_Download" />
+            <option name="CONTEXT_PATH" value="/Multithreaded_Download_war_exploded" />
           </settings>
         </artifact>
       </deployment>
@@ -260,25 +205,25 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Multithreaded_Download" />
+          <artifact name="Multithreaded_Download:war exploded" />
         </option>
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.UserDaoTest" />
-      <item itemvalue="JUnit.UserDaoTest.insertTest" />
-      <item itemvalue="JUnit.UserDaoTest.deleteByPrimaryKeyTest" />
-      <item itemvalue="JUnit.UserDaoTest.selectoneTest" />
-      <item itemvalue="JUnit.UserDaoTest.updataoneTest" />
+      <item itemvalue="HTTP 请求.generated-requests#4" />
+      <item itemvalue="HTTP 请求.generated-requests#5" />
+      <item itemvalue="HTTP 请求.generated-requests#6" />
+      <item itemvalue="HTTP 请求.generated-requests#7" />
+      <item itemvalue="HTTP 请求.generated-requests#8" />
       <item itemvalue="Tomcat 服务器.Tomcat 9.0.52" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserDaoTest.updataoneTest" />
-        <item itemvalue="JUnit.UserDaoTest.insertTest" />
-        <item itemvalue="JUnit.UserDaoTest.selectoneTest" />
-        <item itemvalue="JUnit.UserDaoTest.deleteByPrimaryKeyTest" />
-        <item itemvalue="JUnit.UserDaoTest" />
+        <item itemvalue="HTTP 请求.generated-requests#8" />
+        <item itemvalue="HTTP 请求.generated-requests#7" />
+        <item itemvalue="HTTP 请求.generated-requests#6" />
+        <item itemvalue="HTTP 请求.generated-requests#5" />
+        <item itemvalue="HTTP 请求.generated-requests#4" />
       </list>
     </recent_temporary>
   </component>
@@ -306,6 +251,9 @@
       <workItem from="1636089769739" duration="18242000" />
       <workItem from="1636180997717" duration="10467000" />
       <workItem from="1636246203315" duration="1481000" />
+      <workItem from="1636251933334" duration="8093000" />
+      <workItem from="1636272329879" duration="109714000" />
+      <workItem from="1636714141785" duration="332000" />
     </task>
     <servers />
   </component>

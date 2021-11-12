@@ -1,5 +1,6 @@
 package com.down.ssm.service.impl;
 
+import com.down.ssm.domain.DownInformation;
 import com.down.ssm.pojo.time;
 
 import java.io.File;
@@ -12,7 +13,7 @@ import java.net.URL;
 
 
 
-public class MyThread extends Thread{  // 继承Thread类，作为线程的实现类
+public class MyThread  extends Thread  {  // 继承Thread类，作为线程的实现类
 
     public static final int MAX_THREAD_COUNT = 5;
     /*
@@ -119,16 +120,17 @@ public class MyThread extends Thread{  // 继承Thread类，作为线程的实�
     public void run(){  // 覆写run()方法，作为线程 的操作主体
         String token="v32Eo2Tw+qWI/eiKW3D8ye7l19mf1NngRLushO6CumLMHIO1aryun0/Y3N3YQCv/TqzaO/TFHw4=";
 
-        try {
-
-            downLoadFromUrl(this.downpath, this.file,this.savapath,token);
-            System.out.println(this.file+"下载完成");
-            //	 interrupt();
-        } catch (IOException | InterruptedException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-            //	interrupt();
-
+        while (!Thread.currentThread().isInterrupted()) {
+            try {
+                downLoadFromUrl(this.downpath, this.file, this.savapath, token);
+                System.out.println(this.file + "下载完成");
+                Thread.currentThread().interrupt();
+                //	 interrupt();
+            } catch (IOException | InterruptedException e) {
+                // TODO 自动生成的 catch 块
+                Thread.currentThread().interrupt();
+                e.printStackTrace();
+            }
         }
 
     }
@@ -139,17 +141,14 @@ public class MyThread extends Thread{  // 继承Thread类，作为线程的实�
             return 0 ;
         }
         URL url = new URL(fileUrl);
-        HttpURLConnection conn = null;
+
         try {
-            conn = (HttpURLConnection) url.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("HEAD");
             conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows 7; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 YNoteCef/5.8.0.1 (Windows)");
             return (long) conn.getContentLength();
         } catch (IOException e) {
             return 0 ;
-        } finally {
-
-            conn.disconnect();
         }
 
     }
@@ -163,6 +162,27 @@ public class MyThread extends Thread{  // 继承Thread类，作为线程的实�
         long size= getFileLength(urlStr); //获取总大小
 
         Time.setstarttime();//获取开始时间
+
+        DownInformation downInformation = new DownInformation();
+        CRUDmapperImpl downCRUD =new CRUDmapperImpl();
+       // Thread.sleep(5000);//睡眠5秒
+        int downid = downCRUD.selectLastone();
+        //将数据存到对象，用于写入数据库
+        downInformation.setDown_id((downid+1));
+        downInformation.setDown_url(urlStr);
+        downInformation.setDown_filename(fileName);
+        downInformation.setDown_savapath(savePath);
+        downInformation.setDown_strattime(Time.startDate);
+        downInformation.setDown_size(String.valueOf(size));
+        downInformation.setDown_YNsuccess(0);
+        if(downInformation.getDown_id()>downCRUD.selectLastone()) {
+            downCRUD.insertone(downInformation);
+        }
+        else
+        {
+            downInformation.setDown_id(downCRUD.selectLastone()+1);
+            downCRUD.insertone(downInformation);
+        }
 
         SegmentDownload(urlStr);
         System.out.print(MyThread.currentThread().getName()+"正在执行\n");
@@ -226,6 +246,11 @@ public class MyThread extends Thread{  // 继承Thread类，作为线程的实�
             System.out.print(MyThread.currentThread().getName() + "下载完毕"+"\n");
 
         }
+
+        //将downInformation未填写的下载结束时间写入，并将下载状态修改为1（成功）
+        downInformation.setDown_endtime(Time.endDate);
+        downInformation.setDown_YNsuccess(1);
+        downCRUD.updataone(downInformation);
 
         System.out.println(savePath+File.separator+fileName);
         Time.getstarttime();//输出开始时间

@@ -6,12 +6,17 @@ import java.util.Date;
 public class time {
 	public  String starttime= ""; //开始时间
 	public  String endtime= ""; //结束时间
-	
+	public  Date startDate;
+	public  Date endDate;
 	
 	   public String formattime(Date dNow) { //格式化时间格式为年-月-日-时-分-秒
 		   
 		     SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
-		 
+
+			 if(dNow==null)
+			 {
+				 return "";
+			 }
 		     // System.out.println("当前时间为: " + ft.format(dNow));
 		      return ft.format(dNow);
 		   }
@@ -21,7 +26,7 @@ public class time {
 	{
 		 Date date = new Date();
 		 //当开始下载时，获取一次时间作为开始时间
-		
+		this.startDate=date;
 		 this.starttime=formattime(date);
 
 				 
@@ -30,7 +35,7 @@ public class time {
 	public void setendtime() //时间
 	{
 		 Date date = new Date();
-	
+		 this.endDate=date;
 		/*当结束下载时，获取一次时间作为结束时间
 		预估时间=剩余文件大小/当前下载速度*/
 		 this.endtime =formattime(date);

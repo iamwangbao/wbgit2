@@ -1,11 +1,12 @@
 package com.down.ssm.dao;
 
 import com.down.ssm.domain.DownInformation;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-
+@Scope("prototype")
 @Controller
 public interface DownInformationMapper {
     int deleteByPrimaryKey(Integer down_id);
@@ -18,6 +19,7 @@ public interface DownInformationMapper {
 
     int updateByPrimaryKey(DownInformation record);
 
+    DownInformation selectLastOne();
 
 
 }

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
 
     <!-- 引入属性文件 -->
     <context:property-placeholder location="classpath:db.properties"/>
 
     <!-- 一、使用druid数据库连接池注册数据源 -->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" scope="prototype">
 
 
 
@@ -20,11 +23,11 @@
 
         <!-- 关键配置 -->
         <!-- 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时 -->
-        <property name="initialSize" value="3" />
+        <property name="initialSize" value="9" />
         <!-- 最小连接池数量 -->
-        <property name="minIdle" value="2" />
+        <property name="minIdle" value="20" />
         <!-- 最大连接池数量 -->
-        <property name="maxActive" value="15" />
+        <property name="maxActive" value="500" />
         <!-- 配置获取连接等待超时的时间 -->
         <property name="maxWait" value="10000" />
 
@@ -35,9 +38,9 @@
 
         <!-- 其他配置 -->
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="timeBetweenEvictionRunsMillis" value="30000" />
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <property name="minEvictableIdleTimeMillis" value="30000" />
         <!--   建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，
                   执行validationQuery检测连接是否有效。 -->
         <property name="testWhileIdle" value="true" />
@@ -45,6 +48,50 @@
         <property name="testOnBorrow" value="true" />
         <!-- 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能 -->
         <property name="testOnReturn" value="false" />
+
+        <!--开启监听SQL  -->
+        <property name="filters" value="stat,log4j"/>
+
+        <!-- 监控数据库 -->
+        <property name="proxyFilters">
+            <list>
+                <!--慢SQL记录  监听  -->
+                <ref bean="stat-filter"/>
+                <!--过滤永真条件 防止注入-->
+                <ref bean="wall-filter" />
+                <!--日志输出  -->
+                <ref bean="log-filter"/>
+            </list>
+        </property>
+
+    </bean>
+<!--慢SQL监控-->
+    <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="300" />
+        <property name="logSlowSql" value="true" />
+    </bean>
+
+    <!--配置WallFilter，可以起到拦截作用，从而形成SQL的白名单和黑名单。-->
+    <bean id="wall-filter-config" class="com.alibaba.druid.wall.WallConfig" init-method="init">
+        <!-- 指定配置装载的目录 -->
+        <property name="dir" value="META-INF/druid/wall/db2" />
+    </bean>
+
+    <bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
+        <property name="dbType" value="db2" />
+        <property name="config" ref="wall-filter-config" />
+    </bean>
+
+    <!-- 日志输出 -->
+    <bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
+        <!-- 所有连接相关的日志 -->
+        <property name="connectionLogEnabled" value="false"/>
+        <!-- 所有Statement相关的日志 -->
+        <property name="statementLogEnabled" value="false"/>
+        <!-- 是否显示结果集 -->
+        <property name="resultSetLogEnabled" value="true"/>
+        <!-- 是否显示SQL语句 -->
+        <property name="statementExecutableSqlLogEnable" value="true"/>
     </bean>
 
 </beans>

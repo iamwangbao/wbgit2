@@ -39,3 +39,17 @@ http://localhost:8080/Multithreaded_Download/student
 
 
 ![image-20211107102859711](D:\mygit\wbgit2\项目结构.png)
+
+
+
+2021/11/12
+
+
+
+导航页 http://127.0.0.1:8080/Multithreaded_Download/
+
+![image-20211112190422576](D:\mygit\wbgit2\导航页.png)
+
+实现CRUD功能前端页面，其中的增加功能用于测试，实际增加在填写下载信息启动下载后会自动填入数据库。更新功能的时间填写还未完善，使用的是自动读取的当前系统时间，后续准备修改成手动选择。
+
+![image-20211112190757788](D:\mygit\wbgit2\CRUD前端界面.png)

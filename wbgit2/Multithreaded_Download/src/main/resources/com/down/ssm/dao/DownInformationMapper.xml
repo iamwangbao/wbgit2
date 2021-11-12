@@ -46,4 +46,11 @@
     down_endtime, `down_YNsuccess`
     from `down_information`
   </select>
+
+  <select id="selectLastOne"  resultMap="BaseResultMap">
+    select down_id, down_url, down_filename, down_savapath, down_size, down_strattime,
+           down_endtime, `down_YNsuccess`
+    from `down_information` where down_id=(select max(down_id) from `down_information`);
+  </select>
+
 </mapper>

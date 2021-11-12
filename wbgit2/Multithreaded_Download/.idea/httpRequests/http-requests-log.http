@@ -1,0 +1,60 @@
+GET http://localhost:8080/Multithreaded_Download/admin/selectone/11
+
+<> 2021-11-11T161149.404.html
+
+###
+
+GET http://localhost:8080/Multithreaded_Download/admin/selectone/11
+
+<> 2021-11-11T160913.200.html
+
+###
+
+GET http://localhost:8080/Multithreaded_Download/admin/selectone/{{11}}
+
+###
+
+GET http://localhost:8080/Multithreaded_Download/admin/selectAll
+
+<> 2021-11-10T141957.500.html
+
+###
+
+GET http://localhost:8080/admin/selectAll
+
+###
+
+GET http://localhost:8080/Multithreaded_Download/admin/selectAll
+
+<> 2021-11-10T141230.500.html
+
+###
+
+GET http://localhost:8080/admin/selectAll
+
+###
+
+GET http://localhost:8080/Multithreaded_Download/admin
+
+<> 2021-11-10T131135.405.html
+
+###
+
+GET http://localhost:8080/admin
+
+###
+
+GET http://localhost:8080/Multithreaded_Download/admin
+
+<> 2021-11-09T181106.500.html
+
+###
+
+GET http://localhost:8080/admin/admin
+
+###
+
+GET http://admin
+
+###
+

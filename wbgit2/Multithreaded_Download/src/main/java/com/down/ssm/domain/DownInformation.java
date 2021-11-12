@@ -1,9 +1,10 @@
 package com.down.ssm.domain;
 
 import com.down.ssm.pojo.time;
+import org.springframework.context.annotation.Scope;
 
 import java.util.Date;
-
+@Scope("prototype")
 public class DownInformation {
     private Integer down_id;
 

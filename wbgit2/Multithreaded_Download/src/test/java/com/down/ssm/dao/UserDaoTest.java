@@ -1,10 +1,6 @@
 package com.down.ssm.dao;
 
 import com.down.ssm.domain.DownInformation;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -12,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -129,36 +123,20 @@ public class UserDaoTest {
     }
 
 
+    //查询最后一组信息
     @Test
-    //获取全部用户信息
-    public void queryAll() {
+    public void selectLastOneTest()
+    {
+        ApplicationContext act =
+                new ClassPathXmlApplicationContext("Beans.xml");
 
+        DownInformationMapper downDao =
+                (DownInformationMapper) act.getBean("downInformationDao");
 
-        try {
-            String source = "mybatis-config22.xml";
-            InputStream is = Resources.getResourceAsStream(source);
-            //2 创建一个工厂，完成对配置文件的读取
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
-            //3 创建sqlSession，开启工厂
-            SqlSession sqlSession = sqlSessionFactory.openSession();
-
-            //  SqlSession sqlSession = MybatisUtil.createSqlSession();
-            //第一种方法  通过全限定名获取信息
-            //  List<User> n=sqlSession.selectList("cn.cn.jdbc.dao.TuserTest.queryAll");
-            //第二种方法  通过接口返回信息引入映射文件中
-            List<DownInformation> n = sqlSession.getMapper(DownInformationMapper.class).selectAll();
-
-
-            if (n != null) {
-                for (DownInformation tuser : n) {
-
-                    System.out.println(tuser);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        DownInformation down = downDao.selectLastOne();
+        System.out.println(down);
 
     }
+
 
 }

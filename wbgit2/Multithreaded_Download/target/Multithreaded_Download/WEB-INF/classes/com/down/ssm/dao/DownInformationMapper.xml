@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.down.ssm.dao.DownInformationMapper">
+
+  <resultMap id="BaseResultMap" type="com.down.ssm.domain.DownInformation">
+    <id column="down_id" jdbcType="INTEGER" property="down_id" />
+    <result column="down_url" jdbcType="VARCHAR" property="down_url" />
+    <result column="down_filename" jdbcType="VARCHAR" property="down_filename" />
+    <result column="down_savapath" jdbcType="VARCHAR" property="down_savapath" />
+    <result column="down_size" jdbcType="VARCHAR" property="down_size" />
+    <result column="down_strattime" jdbcType="TIMESTAMP" property="down_strattime" />
+    <result column="down_endtime" jdbcType="TIMESTAMP" property="down_endtime" />
+    <result column="down_YNsuccess" jdbcType="INTEGER" property="down_YNsuccess" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from `down_information`
+    where down_id = #{down_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.down.ssm.domain.DownInformation">
+    insert into `down_information` (down_id, down_url, down_filename, 
+      down_savapath, down_size, down_strattime, 
+      down_endtime, `down_YNsuccess`)
+    values (#{down_id,jdbcType=INTEGER}, #{down_url,jdbcType=VARCHAR}, #{down_filename,jdbcType=VARCHAR}, 
+      #{down_savapath,jdbcType=VARCHAR}, #{down_size,jdbcType=VARCHAR}, #{down_strattime,jdbcType=TIMESTAMP}, 
+      #{down_endtime,jdbcType=TIMESTAMP}, #{down_YNsuccess,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.down.ssm.domain.DownInformation">
+    update `down_information`
+    set down_url = #{down_url,jdbcType=VARCHAR},
+      down_filename = #{down_filename,jdbcType=VARCHAR},
+      down_savapath = #{down_savapath,jdbcType=VARCHAR},
+      down_size = #{down_size,jdbcType=VARCHAR},
+      down_strattime = #{down_strattime,jdbcType=TIMESTAMP},
+      down_endtime = #{down_endtime,jdbcType=TIMESTAMP},
+      `down_YNsuccess` = #{down_YNsuccess,jdbcType=INTEGER}
+    where down_id = #{down_id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select down_id, down_url, down_filename, down_savapath, down_size, down_strattime, 
+    down_endtime, `down_YNsuccess`
+    from `down_information`
+    where down_id = #{down_id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select down_id, down_url, down_filename, down_savapath, down_size, down_strattime, 
+    down_endtime, `down_YNsuccess`
+    from `down_information`
+  </select>
+
+  <select id="selectLastOne"  resultMap="BaseResultMap">
+    select down_id, down_url, down_filename, down_savapath, down_size, down_strattime,
+           down_endtime, `down_YNsuccess`
+    from `down_information` where down_id=(select max(down_id) from `down_information`);
+  </select>
+
+</mapper>

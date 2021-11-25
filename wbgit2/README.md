@@ -53,3 +53,15 @@ http://localhost:8080/Multithreaded_Download/student
 实现CRUD功能前端页面，其中的增加功能用于测试，实际增加在填写下载信息启动下载后会自动填入数据库。更新功能的时间填写还未完善，使用的是自动读取的当前系统时间，后续准备修改成手动选择。
 
 ![image-20211112190757788](D:\mygit\wbgit2\CRUD前端界面.png)
+
+
+
+2021/11/26 同时使用多个界面下载多个文件时会出现由于连接数过多导致mysql拒绝连接而无法下载（以前的老问题了）
+
+解决：修改配置文件，增大mysql的连接数。
+
+（windows找到mysql的安装目录，修改my.ini文件中max_connections=700，然后重启mysql服务）
+
+（linux找到mysql的安装目录，修改my.cnf文件中max_connections=700，然后重启mysql服务（service mysql restart））
+
+初始文件是150个连接，下载8个文件时连接数达到170多导致超量（使用了druid可以定时检测回收，但是要等时间，重新跑程序也可以清空连接数）。
